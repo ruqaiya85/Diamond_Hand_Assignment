@@ -3,7 +3,6 @@ package scheduler
 import (
     "context"
     "time"
-
     "github.com/jmoiron/sqlx"
     "github.com/robfig/cron/v3"
     "github.com/sirupsen/logrus"
@@ -23,6 +22,7 @@ func StartHourlyPriceFetcher(priceSvc services.PriceService, db *sqlx.DB) {
             logrus.WithError(err).Warn("failed to list symbols for price fetch")
             return
         }
+        
         for _, s := range symbols {
             if _, err := priceSvc.FetchAndStorePrice(ctx, s); err != nil {
                 logrus.WithField("symbol", s).WithError(err).Warn("price fetch failed")
@@ -30,6 +30,7 @@ func StartHourlyPriceFetcher(priceSvc services.PriceService, db *sqlx.DB) {
         }
         logrus.Info("Hourly price fetcher done")
     })
+    
     if err != nil {
         logrus.WithError(err).Error("cron add func failed")
         return

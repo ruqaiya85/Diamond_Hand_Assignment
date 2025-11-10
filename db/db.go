@@ -16,6 +16,7 @@ func NewDBFromEnv() (*sqlx.DB, error) {
     pass := getenv("DB_PASS", "Warmc0nnect")
     name := getenv("DB_NAME", "Assignment")
 
+    
     dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
         host, port, user, pass, name)
     db, err := sqlx.Connect("postgres", dsn)

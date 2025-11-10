@@ -288,10 +288,12 @@ func (h *Handler) GetPortfolio(c *gin.Context) {
         Symbol string `db:"symbol"`
         Qty    string `db:"quantity"`
     }
+    
     if err := h.db.SelectContext(ctx, &holdings, `SELECT symbol, quantity FROM holdings_cache WHERE user_id=$1`, userId); err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": "db error"})
         return
     }
+    
     totalINR := decimal.Zero
     data := []gin.H{}
     for _, hld := range holdings {
@@ -300,6 +302,7 @@ func (h *Handler) GetPortfolio(c *gin.Context) {
         if err := h.db.GetContext(ctx, &priceStr, `SELECT price FROM stock_prices WHERE symbol=$1 ORDER BY fetched_at DESC LIMIT 1`, hld.Symbol); err != nil {
             priceStr = "0"
         }
+        
         price, _ := decimal.NewFromString(priceStr)
         value := price.Mul(qty).Round(4)
         totalINR = totalINR.Add(value)
@@ -310,6 +313,7 @@ func (h *Handler) GetPortfolio(c *gin.Context) {
             "value_inr":   value.String(),
         })
     }
+    
     c.JSON(http.StatusOK, gin.H{
         "total_inr": totalINR.String(),
         "holdings":  data,

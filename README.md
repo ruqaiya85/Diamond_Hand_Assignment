@@ -19,4 +19,5 @@ This project implements a minimal backend for Stocky — a hypothetical service 
 - Price fetching is a mocked random generator, hourly job stores price points in stock_prices.
 - Ledger entries follow a simple double-entry pattern, holdings_cache caches per-user holdings for quick reads.
 
-## Rukaiya Kochikar
+## Author
+- Rukaiya Kochikar

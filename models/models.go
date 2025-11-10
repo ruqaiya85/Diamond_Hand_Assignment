@@ -8,8 +8,7 @@ type RewardRequest struct {
     Quantity       string  `json:"quantity" binding:"required"` // send as string to avoid float errors
     RewardedAt     string  `json:"rewarded_at" binding:"required"`
     IdempotencyKey *string `json:"idempotency_key,omitempty"`
-    
-}
+    }
 
 type RewardEvent struct {
     ID             string    `db:"id" json:"id"`

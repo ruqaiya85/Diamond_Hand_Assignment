@@ -5,7 +5,6 @@ import (
     //"database/sql"
     "math/rand"
     //"time"
-
     "github.com/jmoiron/sqlx"
     "github.com/sirupsen/logrus"
     "github.com/shopspring/decimal"

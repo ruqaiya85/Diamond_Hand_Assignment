@@ -3,10 +3,8 @@ package main
 import (
     //"fmt"
     "os"
-
     "github.com/gin-gonic/gin"
     "github.com/sirupsen/logrus"
-
     "github.com/ruqaiya85/Diamond_Hand_Assignment/logger"
     "github.com/ruqaiya85/Diamond_Hand_Assignment/db"
     "github.com/ruqaiya85/Diamond_Hand_Assignment/handlers"

@@ -5,6 +5,7 @@ import (
     "os"
 )
 
+
 func Init() {
     logrus.SetFormatter(&logrus.TextFormatter{
         FullTimestamp: true,

@@ -2,6 +2,7 @@ module github.com/ruqaiya85/Diamond_Hand_Assignment
 
 go 1.21
 
+
 require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/jmoiron/sqlx v1.3.5
@@ -10,6 +11,7 @@ require (
 	github.com/shopspring/decimal v1.4.0
 	github.com/sirupsen/logrus v1.9.3
 )
+
 
 require (
 	github.com/bytedance/sonic v1.11.6 // indirect
